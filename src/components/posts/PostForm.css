@@ -1,0 +1,16 @@
+
+.ant-form {
+    margin-left: 300px !important;
+    margin-right: 300px !important;
+}
+
+textarea.ant-input {
+    height: 500px !important;
+}
+
+.btn-submit {
+    background-color: rgba(86, 86, 197, 0.89) !important;
+    border-radius: 20px !important;
+    color: white !important;
+    float: right;
+}

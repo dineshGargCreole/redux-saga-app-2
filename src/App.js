@@ -6,6 +6,8 @@ import { Layout, Breadcrumb } from 'antd';
 import HeaderNavbar from './components/nav/HeaderNavbar';
 import SideNavbar from './components/nav/SideNavbar';
 import SubHeader from './components/nav/SubHeader';
+import {Routes, Route} from 'react-router-dom';
+import CreatePost from './components/posts/CreatePost'
 
 const { Content } = Layout;
 
@@ -19,13 +21,14 @@ function App() {
             <HeaderNavbar />
             <Content style={{ margin: '0 16px' }}>
                 <SubHeader />
-                <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-                  <Posts />
+                <div className="site-layout-background" style={{ padding: 24, minHeight: '87vh' }}>
+                  <Routes>
+                    <Route exact path='/' element={<Posts />} />
+                    <Route exact path='/post' element={<CreatePost />} />
+                  </Routes>
                 </div>
             </Content>
         </Layout>
-        {/* <Navbar /> */}
-        {/* <Posts /> */}
       </Layout>
     </div>
   );

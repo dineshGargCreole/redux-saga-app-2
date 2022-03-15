@@ -1,7 +1,7 @@
-import {getPostsService} from '../../services/PostsServices'
+import {getPostsService, createPostService} from '../../services/PostsServices'
 import {call, put, takeEvery, fork} from 'redux-saga/effects'
 import {setPosts, rejectPosts} from '../action'
-import {GET_POSTS} from '../constant'
+import {GET_POSTS, NEW_POST} from '../constant'
 
 
 function* handleGetPosts() {
@@ -16,6 +16,17 @@ function* handleGetPosts() {
 
 function* getPosts() {
     yield takeEvery(GET_POSTS, handleGetPosts)
+}
+
+function* handleCreatePost() {
+    try {
+        
+    } catch(err) {}
+}
+
+
+function* createPost() {
+    yield takeEvery(NEW_POST, handleCreatePost)
 }
 
 
