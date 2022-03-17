@@ -1,11 +1,11 @@
 
-.ant-form {
+.center-form {
     margin-left: 300px !important;
     margin-right: 300px !important;
 }
 
 textarea.ant-input {
-    height: 500px !important;
+    height: 300px !important;
 }
 
 .btn-submit {

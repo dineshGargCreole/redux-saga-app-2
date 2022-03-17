@@ -1,17 +1,29 @@
 import React from 'react'
-import {Button, Form, Input} from 'antd'
+import {Button, Form, Input, DatePicker} from 'antd'
+import {connect} from 'react-redux'
+import {newPost} from '../../redux/action'
+import moment from 'moment'
 
 import './PostForm.css'
 
-function CreatePost() {
+function CreatePost(props) {
+    const [form] = Form.useForm();
 
     const handleCreatePost = (values) => {
         const postId = Math.floor(Math.random()*1000)
         const post = {
             ...values,
             userId: postId,
-            id: postId,
+            post_date: values['post_date'].format('YYYY-MM-DD')
         }
+        props.newPost(post);
+        form.resetFields();
+    }
+
+    const handleDisabledDate = (currentDate) => {
+        const yesterday = moment().add(-1, 'days')
+        const futureDate = moment().add(3, 'days')
+        return currentDate < yesterday || currentDate > futureDate;
     }
 
   return (
@@ -19,10 +31,13 @@ function CreatePost() {
         name='post-form'
         layout='vertical'
         onFinish={(values) => handleCreatePost(values)}
+        form={form}
+        className='center-form'
     >
         <Form.Item
             name='title'
             label='Title'
+            rules={[{required: true, message: 'This is required field'}]}
         >
             <Input />
         </Form.Item>
@@ -30,8 +45,18 @@ function CreatePost() {
         <Form.Item
             name='body'
             label='Description'
+            rules={[{required: true, message: 'This is required field'}]}
         >
             <Input.TextArea />
+        </Form.Item>
+
+        <Form.Item
+            name='post_date'
+            label='Post Date'
+        >
+            <DatePicker
+                disabledDate = {handleDisabledDate}
+            />
         </Form.Item>
 
         <Form.Item>
@@ -41,4 +66,14 @@ function CreatePost() {
   )
 }
 
-export default CreatePost
+const mapStateToProps = (state) => {
+    return state;
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        newPost: (post) => dispatch(newPost(post))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (CreatePost)

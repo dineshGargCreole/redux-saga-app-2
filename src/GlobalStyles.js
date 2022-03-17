@@ -43,6 +43,10 @@ const Global = createGlobalStyle`
     .ant-card-body {
         height: 100px;
     }
+
+    .ant-card {
+        border: 2px solid saddlebrown;
+    }
 `;
 
 export default Global;
