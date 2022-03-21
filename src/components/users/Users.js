@@ -1,15 +1,16 @@
 import React, {useEffect} from 'react'
 import {getUsers} from '../../redux/action'
 import {connect} from 'react-redux'
+import UserList from './UserList'
 
 function Users(props) {
     useEffect(() => {
         props.getUsers()
     }, []);
-    console.log('users', props.users)
+
   return (
     <div className="site-layout-background layout-background">
-        Users
+        <UserList />
     </div>
   )
 }

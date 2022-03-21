@@ -21,7 +21,7 @@ const Global = createGlobalStyle`
       }
       
       .site-layout .site-layout-background {
-        background: #ede6c5;
+        background: #fff;
       }
 
       .ant-avatar {
