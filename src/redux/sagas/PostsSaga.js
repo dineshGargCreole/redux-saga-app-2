@@ -1,7 +1,7 @@
-import {getPostsService, createPostService, editPostService, getPostService} from '../../services/PostsServices'
+import {getPostsService, createPostService, editPostService, getPostService, deletePostService} from '../../services/PostsServices'
 import {call, put, takeEvery, fork} from 'redux-saga/effects'
-import {setPosts, rejectPosts, newPostSuccess, newPostFail, editPostSuccess, editPostFail, getPostSuccess, getPostFail} from '../action'
-import {EDIT_POST, GET_POST, GET_POSTS, NEW_POST} from '../constant'
+import {setPosts, rejectPosts, newPostSuccess, newPostFail, editPostSuccess, editPostFail, getPostSuccess, getPostFail, deletePostSuccess, deletePostFail} from '../action'
+import {DELETE_POST, EDIT_POST, GET_POST, GET_POSTS, NEW_POST} from '../constant'
 
 
 function* handleGetPosts() {
@@ -56,7 +56,6 @@ function* handleGETPost({payload}) {
     try {
         const response = yield call(getPostService, payload)
         if(response.statusText === 'OK') {
-            console.log('res', response)
             yield put(getPostSuccess(response.data))
         }
     } catch(err) {
@@ -69,11 +68,26 @@ function* getPost() {
 }
 
 
+function* deletePost() {
+    yield takeEvery(DELETE_POST, function* ({payload}) {
+        try {
+            const response = yield call(deletePostService, payload)
+            if (response.statusText === 'OK') {
+                yield put(deletePostSuccess());
+            }
+        } catch(err) {
+            yield put(deletePostFail());
+        }
+    })
+}
+
+
 const PostsSaga = [
     fork(getPosts),
     fork(createPost),
-    fork(editPost),
     fork(getPost),
+    fork(editPost),
+    fork(deletePost),
 ]
 
 export default PostsSaga;

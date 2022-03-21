@@ -21,7 +21,7 @@ const Global = createGlobalStyle`
       }
       
       .site-layout .site-layout-background {
-        background: #fff;
+        background: #ede6c5;
       }
 
       .ant-avatar {
@@ -46,6 +46,22 @@ const Global = createGlobalStyle`
 
     .ant-card {
         border: 2px solid saddlebrown;
+    }
+
+    .layout-background {
+        padding: 24;
+        min-height: 87vh;
+    }
+
+    .img-logo {
+        height: 109px;
+        width: 161px;
+    }
+
+    .posts-card-pagination {
+        float: right;
+        margin-right: 25px;
+        margin-top: 90px;
     }
 `;
 

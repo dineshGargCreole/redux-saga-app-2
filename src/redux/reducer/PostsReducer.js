@@ -1,4 +1,4 @@
-import { GET_POSTS, GET_POSTS_SUCCESS, GET_POSTS_FAIL, NEW_POST, NEW_POST_SUCCESS, NEW_POST_FAIL, EDIT_POST, EDIT_POST_FAIL, EDIT_POST_SUCCESS, GET_POST, GET_POST_FAIL, GET_POST_SUCCESS } from "../constant";
+import { GET_POSTS, GET_POSTS_SUCCESS, GET_POSTS_FAIL, NEW_POST, NEW_POST_SUCCESS, NEW_POST_FAIL, EDIT_POST, EDIT_POST_FAIL, EDIT_POST_SUCCESS, GET_POST, GET_POST_FAIL, GET_POST_SUCCESS, DELETE_POST, DELETE_POST_SUCCESSS, DELETE_POST_FAIL } from "../constant";
 
 const initialState = {
     posts: [],
@@ -9,8 +9,9 @@ const initialState = {
 
 const PostReducer = (state=initialState, action) => {
     switch (action.type) {
-        case GET_POST:
+        case DELETE_POST:
         case EDIT_POST:
+        case GET_POST:
         case NEW_POST:
         case GET_POSTS:
             return {
@@ -25,6 +26,7 @@ const PostReducer = (state=initialState, action) => {
                 loading: false,
             }
         
+        case DELETE_POST_FAIL:
         case GET_POST_FAIL:
         case EDIT_POST_FAIL:
         case NEW_POST_FAIL:
@@ -34,14 +36,10 @@ const PostReducer = (state=initialState, action) => {
                 error: action.payload,
                 loading: false,
             }
-
-        case NEW_POST_SUCCESS:
-            return {
-                ...state,
-                loading: false,
-            }
-
+        
+        case DELETE_POST_SUCCESSS:
         case EDIT_POST_SUCCESS:
+        case NEW_POST_SUCCESS:
             return {
                 ...state,
                 loading: false,

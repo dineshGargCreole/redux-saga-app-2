@@ -4,31 +4,32 @@ import EditPostForm from './EditPostForm';
 import moment from 'moment'
 import './EditPost.css'
 import {connect} from 'react-redux'
-import {editPost} from '../../redux/action'
+import {editPost, getPost} from '../../redux/action'
 
 function EditPost(props) {
-  console.log('ppp', props)
-  const {post, onCancel, isEdit, setEdit} = props
+  const {post, onCancel, isEdit, setIsEdit, editPost, getPost} = props
   const [form] = Form.useForm();
 
-  const handleEdit = () => {
+  const handleEdit = (e) => {
+    e.preventDefault();
     form.setFieldsValue({
       body: post.body,
       post_date: moment(post.post_date)
     })
-    setEdit(true);
+    setIsEdit();
   }
 
   const handleFinish = (data) => {
-    const editedPost = {
+    const changedPost = {
       ...data,
       post_date: data['post_date'].format('YYYY-MM-DD'),
       id: post.id,
       userId: post.userId,
       title: post.title,
     }
-    editPost(editedPost);
-    onCancel()
+    editPost(changedPost);
+    setIsEdit();
+    getPost(post.id)
   }
   return (
     <div>
@@ -37,7 +38,7 @@ function EditPost(props) {
           <EditPostForm /> :
           <>
             <p>{post.body}</p>
-            <p>Post Date: {post.post_date}</p>
+            <p>Post Date: {moment(post.post_date).format('LL')}</p>
           </>
         }
         
@@ -46,7 +47,7 @@ function EditPost(props) {
           <Button onClick={onCancel}>Cancel</Button>
           {
             isEdit ?
-            <Button htmlType='submit' type='primary'>Submit</Button> :
+            <Button htmlType="submit" type='primary'>Submit</Button> :
             <Button onClick={handleEdit} type='primary'>Edit</Button>
           }
         </Space>
@@ -56,7 +57,6 @@ function EditPost(props) {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     post: state.postsReducer?.post
   }
@@ -64,7 +64,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    editPost: (post) => dispatch(editPost(post))
+    editPost: (changedPost) => dispatch(editPost(changedPost)),
+    getPost: (id) => dispatch(getPost(id)),
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps) (EditPost)

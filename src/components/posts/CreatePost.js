@@ -27,13 +27,14 @@ function CreatePost(props) {
     }
 
   return (
-    <Form
-        name='post-form'
-        layout='vertical'
-        onFinish={(values) => handleCreatePost(values)}
-        form={form}
-        className='center-form'
-    >
+      <div className="site-layout-background layout-background">
+        <Form
+            name='post-form'
+            layout='vertical'
+            onFinish={(values) => handleCreatePost(values)}
+            form={form}
+            className='center-form'
+        >
         <Form.Item
             name='title'
             label='Title'
@@ -53,6 +54,7 @@ function CreatePost(props) {
         <Form.Item
             name='post_date'
             label='Post Date'
+            rules={[{required: true, message: 'This is required field'}]}
         >
             <DatePicker
                 disabledDate = {handleDisabledDate}
@@ -62,7 +64,9 @@ function CreatePost(props) {
         <Form.Item>
             <Button className='btn-submit' htmlType='submit'>Submit</Button>
         </Form.Item>
-    </Form>
+        </Form>
+      </div>
+    
   )
 }
 

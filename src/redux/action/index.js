@@ -1,4 +1,4 @@
-import { GET_POSTS, GET_POSTS_SUCCESS, GET_POSTS_FAIL, NEW_POST, NEW_POST_SUCCESS, NEW_POST_FAIL, EDIT_POST, EDIT_POST_SUCCESS, EDIT_POST_FAIL, GET_POST, GET_POST_SUCCESS, GET_POST_FAIL } from "../constant";
+import { GET_POSTS, GET_POSTS_SUCCESS, GET_POSTS_FAIL, NEW_POST, NEW_POST_SUCCESS, NEW_POST_FAIL, EDIT_POST, EDIT_POST_SUCCESS, EDIT_POST_FAIL, GET_POST, GET_POST_SUCCESS, GET_POST_FAIL, DELETE_POST, DELETE_POST_SUCCESSS, DELETE_POST_FAIL, GET_USERS, GET_USERS_SUCCESS, GET_USERS_FAIL } from "../constant";
 
 
 export const getPosts = () => {
@@ -41,10 +41,10 @@ export const newPostFail = (err) => {
     }
 }
 
-export const editPost = (post) => {
+export const editPost = (updatedPost) => {
     return {
         type: EDIT_POST,
-        payload: post,
+        payload: updatedPost,
     }
 }
 
@@ -78,6 +78,46 @@ export const getPostSuccess = (post) => {
 export const getPostFail = (err) => {
     return {
         type: GET_POST_FAIL,
+        payload: err,
+    }
+}
+
+export const deletePost = (id) => {
+    return {
+        type: DELETE_POST,
+        payload: id,
+    }
+}
+
+export const deletePostSuccess = () => {
+    return {
+        type: DELETE_POST_SUCCESSS,
+    }
+}
+
+export const deletePostFail = (err) => {
+    return {
+        type: DELETE_POST_FAIL,
+        payload: err,
+    }
+}
+
+export const getUsers = () => {
+    return {
+        type: GET_USERS,
+    }
+}
+
+export const getUsersSuccess = (users) => {
+    return {
+        type: GET_USERS_SUCCESS,
+        payload: users,
+    }
+}
+
+export const getUsersFail = (err) => {
+    return {
+        type: GET_USERS_FAIL,
         payload: err,
     }
 }

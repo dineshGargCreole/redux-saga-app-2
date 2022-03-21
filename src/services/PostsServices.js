@@ -20,4 +20,9 @@ export const getPostService = async (id) => {
     return response
 }
 
+export const deletePostService = async (id) => {
+    const response = await axios.delete(`http://localhost:3000/posts/${id}`);
+    return response;
+}
+
 

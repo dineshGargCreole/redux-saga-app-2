@@ -14,3 +14,11 @@ export const EDIT_POST_FAIL = 'EDIT_POST_FAIL'
 export const GET_POST = 'GET_POST'
 export const GET_POST_SUCCESS = 'GET_POST_SUCCESS'
 export const GET_POST_FAIL = 'GET_POST_FAIL'
+
+export const DELETE_POST = 'DELETE_POST'
+export const DELETE_POST_SUCCESSS = 'DELETE_POST_SUCCESSS'
+export const DELETE_POST_FAIL = 'DELETE_POST_FAIL'
+
+export const GET_USERS = 'GET_USERS'
+export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS'
+export const GET_USERS_FAIL = 'GET_USERS_FAIL'

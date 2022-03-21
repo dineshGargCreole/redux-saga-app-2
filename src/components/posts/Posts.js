@@ -8,24 +8,15 @@ import EditPost from './EditPost';
 
 function Posts(props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [post, setPost] = useState({});
-  const [editingId, setEditingId] = useState();
   const [isEdit, setIsEdit] = useState(false);
 
   useEffect(() => {
     props.getPosts()
   }, []);
 
-  useEffect(() => {
-    props.getPost(editingId);
-    setEditingId(null);
-  }, [isModalOpen])
-
   const handleMadal = (post) => {
-    setIsModalOpen(!isModalOpen)
-    setEditingId(post.id)
-    // props.getPost(post.id)
-    // setPost(post);
+    setIsModalOpen(!isModalOpen);
+    props.getPost(post.id)
   }
 
   const onCancel = () => {
@@ -36,7 +27,7 @@ function Posts(props) {
   const posts = props.posts.posts;
 
   return (
-    <div>
+    <div className="site-layout-background layout-background">
         <Modal
           title={props.post.title}
           visible={isModalOpen}
@@ -44,7 +35,7 @@ function Posts(props) {
           onOk={() => setIsModalOpen(false)}
           onCancel={onCancel}
         >
-          <EditPost onCancel={onCancel} isEdit={isEdit} setEdit={() => setIsEdit(true)} />
+          <EditPost onCancel={onCancel} isEdit={isEdit} setIsEdit={() => setIsEdit(!isEdit)} />
         </Modal>
       { posts.length === 0 ? <Loader /> : <PostsList setIsModalOpen={handleMadal} /> }
     </div>
@@ -52,11 +43,10 @@ function Posts(props) {
 }
 
 const mapStateToProps = state => {
-  console.log('state', state)
-    return {
-      posts: state.postsReducer,
-      post: state.postsReducer.post,
-    }
+  return {
+    posts: state.postsReducer,
+    post: state.postsReducer.post,
+  }
 }
 
 const mapDispatchToProps = dispatch => {
