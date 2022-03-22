@@ -31,6 +31,7 @@ function EditPost(props) {
     setIsEdit();
     getPost(post.id)
   }
+
   return (
     <div>
       <Form form={form} layout='vertical' onFinish={handleFinish}>

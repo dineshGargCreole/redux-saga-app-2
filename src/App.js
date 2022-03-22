@@ -14,14 +14,14 @@ const { Content } = Layout;
 
 function App() {
   const location = useLocation();
-  const [subHeader, setSubHeader] = useState('')
+  const [params, setParams] = useState('')
 
   useEffect(() => {
     const path = location.pathname.slice(1);
     if (path) {
-      setSubHeader(path[0].toUpperCase() + path.slice(1).toLowerCase());
+      setParams(path[0].toUpperCase() + path.slice(1).toLowerCase());
     } else {
-      setSubHeader('')
+      setParams('')
     }
   }, [location])
 
@@ -31,9 +31,9 @@ function App() {
       <Layout style={{ minHeight: '100vh' }}>
         <SideNavbar />
         <Layout className="site-layout">
-            <HeaderNavbar />
+            <HeaderNavbar params={params} />
             <Content style={{ margin: '0 16px' }}>
-                <SubHeader subHeader={subHeader} />
+                <SubHeader subHeader={params} />
                   <Routes>
                     <Route exact path='/' element={<Posts />} />
                     <Route exact path='/post' element={<CreatePost />} />

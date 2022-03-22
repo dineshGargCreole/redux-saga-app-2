@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
-import {getPosts, getPost} from '../../redux/action'
+import {getPosts, getPost, resetSearch} from '../../redux/action'
 import PostsList from './PostsList';
 import Loader from './Loader';
 import {Modal} from 'antd'
@@ -11,6 +11,7 @@ function Posts(props) {
   const [isEdit, setIsEdit] = useState(false);
 
   useEffect(() => {
+    props.resetSearch();
     props.getPosts()
   }, []);
 
@@ -53,6 +54,7 @@ const mapDispatchToProps = dispatch => {
   return {
     getPosts: () => dispatch(getPosts()),
     getPost: (id) => dispatch(getPost(id)),
+    resetSearch: () => dispatch(resetSearch()),
   }
 }
 

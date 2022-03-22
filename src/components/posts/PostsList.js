@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import TabsCard from '../card/TabsCard';
 
 function PostsList(props) {
-    const posts = props.posts.posts;
+    const posts = props.posts;
     const [start, setStart] = useState(0);
     const [end, setEnd] = useState(12);
     const [pageSize, SetPageSize] = useState(12);
@@ -45,7 +45,7 @@ function PostsList(props) {
 
 const mapStateToProps = state => {
     return {
-        posts: state.postsReducer
+        posts: state.appReducer.items.length===0 ? state.postsReducer.posts : state.appReducer.items,
     }
 }
 

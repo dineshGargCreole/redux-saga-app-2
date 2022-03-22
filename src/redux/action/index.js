@@ -1,4 +1,4 @@
-import { GET_POSTS, GET_POSTS_SUCCESS, GET_POSTS_FAIL, NEW_POST, NEW_POST_SUCCESS, NEW_POST_FAIL, EDIT_POST, EDIT_POST_SUCCESS, EDIT_POST_FAIL, GET_POST, GET_POST_SUCCESS, GET_POST_FAIL, DELETE_POST, DELETE_POST_SUCCESSS, DELETE_POST_FAIL, GET_USERS, GET_USERS_SUCCESS, GET_USERS_FAIL } from "../constant";
+import { GET_POSTS, GET_POSTS_SUCCESS, GET_POSTS_FAIL, NEW_POST, NEW_POST_SUCCESS, NEW_POST_FAIL, EDIT_POST, EDIT_POST_SUCCESS, EDIT_POST_FAIL, GET_POST, GET_POST_SUCCESS, GET_POST_FAIL, DELETE_POST, DELETE_POST_SUCCESSS, DELETE_POST_FAIL, GET_USERS, GET_USERS_SUCCESS, GET_USERS_FAIL, SEARCH, SEARCH_SUCCESS, SEARCH_FAIL, RESET_SEARCH } from "../constant";
 
 
 export const getPosts = () => {
@@ -119,5 +119,32 @@ export const getUsersFail = (err) => {
     return {
         type: GET_USERS_FAIL,
         payload: err,
+    }
+}
+
+export const search = (data) => {
+    return {
+        type: SEARCH,
+        payload: data,
+    }
+}
+
+export const searchSuccess = (items) => {
+    return {
+        type: SEARCH_SUCCESS,
+        payload: items,
+    }
+}
+
+export const searchFail = (err) => {
+    return {
+        type: SEARCH_FAIL,
+        payload: err,
+    }
+}
+
+export const resetSearch = () => {
+    return {
+        type: RESET_SEARCH,
     }
 }

@@ -1,11 +1,12 @@
 import React, {useEffect} from 'react'
-import {getUsers} from '../../redux/action'
+import {getUsers, resetSearch} from '../../redux/action'
 import {connect} from 'react-redux'
 import UserList from './UserList'
 
 function Users(props) {
     useEffect(() => {
-        props.getUsers()
+        props.resetSearch();
+        props.getUsers();
     }, []);
 
   return (
@@ -23,7 +24,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getUsers: () => dispatch(getUsers())
+        getUsers: () => dispatch(getUsers()),
+        resetSearch: () => dispatch(resetSearch())
     }
 }
 

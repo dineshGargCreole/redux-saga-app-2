@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, Form, Input, DatePicker} from 'antd'
+import {Button, Form, Input, DatePicker, Upload} from 'antd'
 import {connect} from 'react-redux'
 import {newPost} from '../../redux/action'
 import moment from 'moment'
@@ -25,6 +25,17 @@ function CreatePost(props) {
         const futureDate = moment().add(3, 'days')
         return currentDate < yesterday || currentDate > futureDate;
     }
+
+    const normFile = (e) => {
+        console.log('evnt',e)
+        if (Array.isArray(e)) {
+            console.log('evnt',e)
+            console.log('list', e.fileList)
+          return e;
+        }
+      
+        return e && e.fileList;
+      };
 
   return (
       <div className="site-layout-background layout-background">
@@ -59,6 +70,18 @@ function CreatePost(props) {
             <DatePicker
                 disabledDate = {handleDisabledDate}
             />
+        </Form.Item>
+
+        <Form.Item
+            name="upload"
+            label="Upload"
+            valuePropName="fileList"
+            getValueFromEvent={normFile}
+            extra="longgggggggggggggggggggggggggggggggggg"
+        >
+            <Upload name="logo" action="/upload.do" listType="picture">
+            <Button>Click to upload</Button>
+            </Upload>
         </Form.Item>
 
         <Form.Item>
