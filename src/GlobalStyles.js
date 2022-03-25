@@ -63,6 +63,10 @@ const Global = createGlobalStyle`
         margin-right: 25px;
         margin-top: 90px;
     }
+
+    .ant-steps {
+        padding: 25px;
+    }
 `;
 
 export default Global;

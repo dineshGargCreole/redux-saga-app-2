@@ -9,6 +9,7 @@ import SubHeader from './components/nav/SubHeader';
 import {Routes, Route, useLocation} from 'react-router-dom';
 import CreatePost from './components/posts/CreatePost'
 import Users from './components/users/Users';
+import GraphChart from './components/graph/GraphChart'
 
 const { Content } = Layout;
 
@@ -38,6 +39,7 @@ function App() {
                     <Route exact path='/' element={<Posts />} />
                     <Route exact path='/post' element={<CreatePost />} />
                     <Route exact path='/users' element={<Users />} />
+                    <Route exact path='/graphs' element={<GraphChart />} />
                   </Routes>
             </Content>
         </Layout>

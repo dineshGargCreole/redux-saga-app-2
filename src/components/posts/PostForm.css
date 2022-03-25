@@ -14,3 +14,9 @@ textarea.ant-input {
     color: white !important;
     float: right;
 }
+
+.btn-previous {
+    background-color: brown !important;
+    margin-right: 5px !important;
+}
+

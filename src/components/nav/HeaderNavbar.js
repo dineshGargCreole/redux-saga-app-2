@@ -18,6 +18,9 @@ function HeaderNavbar({params}) {
             <Menu.Item key="2">
               <Link to='/users'>Users</Link>
             </Menu.Item>
+            <Menu.Item key="4">
+              <Link to='/graphs'>Graphs</Link>
+            </Menu.Item>
             <Menu.Item key="3">
               <SearchNav params={params} />
             </Menu.Item>

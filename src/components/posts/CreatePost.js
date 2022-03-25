@@ -1,15 +1,23 @@
-import React from 'react'
-import {Button, Form, Input, DatePicker, Upload} from 'antd'
+import React, {useState} from 'react'
+import {Form, Steps} from 'antd'
 import {connect} from 'react-redux'
 import {newPost} from '../../redux/action'
-import moment from 'moment'
+import PostTitleForm from './createPostForm/PostTitleForm'
+import PostDescriptionForm from './createPostForm/PostDescriptionForm'
+import PostDateForm from './createPostForm/PostDateForm'
+import { useNavigate } from 'react-router-dom'
+import { RightCircleOutlined } from '@ant-design/icons';
 
 import './PostForm.css'
 
+
 function CreatePost(props) {
     const [form] = Form.useForm();
+    const [activeStep, setActiveStep] = useState(0);
+    const navigate = useNavigate();
 
-    const handleCreatePost = (values) => {
+    const handleCreatePost = () => {
+        const values = form.getFieldsValue(true)
         const postId = Math.floor(Math.random()*1000)
         const post = {
             ...values,
@@ -18,76 +26,39 @@ function CreatePost(props) {
         }
         props.newPost(post);
         form.resetFields();
+        navigate('/');
+
     }
 
-    const handleDisabledDate = (currentDate) => {
-        const yesterday = moment().add(-1, 'days')
-        const futureDate = moment().add(3, 'days')
-        return currentDate < yesterday || currentDate > futureDate;
-    }
+    const handleNext = () => setActiveStep(activeStep+1);
+    const handlePrevious = () => setActiveStep(activeStep-1);
 
-    const normFile = (e) => {
-        console.log('evnt',e)
-        if (Array.isArray(e)) {
-            console.log('evnt',e)
-            console.log('list', e.fileList)
-          return e;
-        }
-      
-        return e && e.fileList;
-      };
+    const CreatePostForm = [
+        {
+            title: 'Step1',
+            content: <PostTitleForm form={form} onFinish={handleNext} />,
+        },
+        {
+            title: 'Step2',
+            content: <PostDescriptionForm form={form} onFinish={handleNext} onPrevious={handlePrevious} />,
+        },
+        {
+            title: 'Step3',
+            content: <PostDateForm form={form} onFinish={handleCreatePost} onPrevious={handlePrevious} />,
+        },
+    ]
 
   return (
       <div className="site-layout-background layout-background">
-        <Form
-            name='post-form'
-            layout='vertical'
-            onFinish={(values) => handleCreatePost(values)}
-            form={form}
-            className='center-form'
-        >
-        <Form.Item
-            name='title'
-            label='Title'
-            rules={[{required: true, message: 'This is required field'}]}
-        >
-            <Input />
-        </Form.Item>
-
-        <Form.Item
-            name='body'
-            label='Description'
-            rules={[{required: true, message: 'This is required field'}]}
-        >
-            <Input.TextArea />
-        </Form.Item>
-
-        <Form.Item
-            name='post_date'
-            label='Post Date'
-            rules={[{required: true, message: 'This is required field'}]}
-        >
-            <DatePicker
-                disabledDate = {handleDisabledDate}
-            />
-        </Form.Item>
-
-        <Form.Item
-            name="upload"
-            label="Upload"
-            valuePropName="fileList"
-            getValueFromEvent={normFile}
-            extra="longgggggggggggggggggggggggggggggggggg"
-        >
-            <Upload name="logo" action="/upload.do" listType="picture">
-            <Button>Click to upload</Button>
-            </Upload>
-        </Form.Item>
-
-        <Form.Item>
-            <Button className='btn-submit' htmlType='submit'>Submit</Button>
-        </Form.Item>
-        </Form>
+        <Steps current={activeStep}>
+            {CreatePostForm.map(item => {
+                return <Steps.Step key={item.title} title={item.title}  />
+            })}
+        </Steps>
+        <br/><br/>
+        <div className='center-form'>
+            {CreatePostForm[activeStep].content}
+        </div>
       </div>
     
   )
