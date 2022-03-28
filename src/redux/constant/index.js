@@ -28,3 +28,9 @@ export const SEARCH_SUCCESS = 'SEARCH_SUCCESS'
 export const SEARCH_FAIL = 'SEARCH_FAIL'
 
 export const RESET_SEARCH = 'RESET_SEARCH'
+
+export const LOGIN = 'LOGIN'
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+export const LOGIN_FAIL = 'LOGIN_FAIL'
+
+export const LOGOUT = 'LOGOUT'

@@ -1,4 +1,4 @@
-import { GET_POSTS, GET_POSTS_SUCCESS, GET_POSTS_FAIL, NEW_POST, NEW_POST_SUCCESS, NEW_POST_FAIL, EDIT_POST, EDIT_POST_SUCCESS, EDIT_POST_FAIL, GET_POST, GET_POST_SUCCESS, GET_POST_FAIL, DELETE_POST, DELETE_POST_SUCCESSS, DELETE_POST_FAIL, GET_USERS, GET_USERS_SUCCESS, GET_USERS_FAIL, SEARCH, SEARCH_SUCCESS, SEARCH_FAIL, RESET_SEARCH } from "../constant";
+import { GET_POSTS, GET_POSTS_SUCCESS, GET_POSTS_FAIL, NEW_POST, NEW_POST_SUCCESS, NEW_POST_FAIL, EDIT_POST, EDIT_POST_SUCCESS, EDIT_POST_FAIL, GET_POST, GET_POST_SUCCESS, GET_POST_FAIL, DELETE_POST, DELETE_POST_SUCCESSS, DELETE_POST_FAIL, GET_USERS, GET_USERS_SUCCESS, GET_USERS_FAIL, SEARCH, SEARCH_SUCCESS, SEARCH_FAIL, RESET_SEARCH, LOGIN, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from "../constant";
 
 
 export const getPosts = () => {
@@ -146,5 +146,32 @@ export const searchFail = (err) => {
 export const resetSearch = () => {
     return {
         type: RESET_SEARCH,
+    }
+}
+
+export const loginUser = (data) => {
+    return {
+        type: LOGIN,
+        payload: data,
+    }
+}
+
+export const loginUserSuccess = (user) => {
+    return {
+        type: LOGIN_SUCCESS,
+        payload: user,
+    }
+}
+
+export const loginUserFail = (err) => {
+    return {
+        type: LOGIN_FAIL,
+        payload: err,
+    }
+}
+
+export const logoutUser = () => {
+    return {
+        type: LOGOUT,
     }
 }

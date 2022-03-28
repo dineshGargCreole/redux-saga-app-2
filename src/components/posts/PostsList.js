@@ -24,6 +24,7 @@ function PostsList(props) {
                             <TabsCard
                                 post={post}
                                 setIsModalOpen={props.setIsModalOpen}
+                                confirmDeleteModal={props.confirmDeleteModal}
                             />
                         </Col>
                     )

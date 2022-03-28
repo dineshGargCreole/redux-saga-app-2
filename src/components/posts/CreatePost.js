@@ -16,6 +16,11 @@ function CreatePost(props) {
     const [activeStep, setActiveStep] = useState(0);
     const navigate = useNavigate();
 
+    const downloadPic = (image) => {
+        const file = image.fileList[0]
+        console.log('values', file)
+    }
+
     const handleCreatePost = () => {
         const values = form.getFieldsValue(true)
         const postId = Math.floor(Math.random()*1000)

@@ -10,10 +10,14 @@ import {Routes, Route, useLocation} from 'react-router-dom';
 import CreatePost from './components/posts/CreatePost'
 import Users from './components/users/Users';
 import GraphChart from './components/graph/GraphChart'
+import Home from './components/home/Home'
+import {connect} from 'react-redux'
+import {loginUser} from './redux/action'
+
 
 const { Content } = Layout;
 
-function App() {
+function App(props) {
   const location = useLocation();
   const [params, setParams] = useState('')
 
@@ -26,6 +30,17 @@ function App() {
     }
   }, [location])
 
+  useEffect(() => {
+    const username = localStorage.getItem('username')
+    const password = localStorage.getItem('password')
+    const data = {
+      username: username,
+      password, password
+    }
+
+    props.loginUser(data);
+  },[])
+
   return (
     <div className="">
       <Global />
@@ -36,7 +51,7 @@ function App() {
             <Content style={{ margin: '0 16px' }}>
                 <SubHeader subHeader={params} />
                   <Routes>
-                    <Route exact path='/' element={<Posts />} />
+                    <Route exact path='/' element={props.loggedUser.length === 0 ? <Home /> : <Posts />} />
                     <Route exact path='/post' element={<CreatePost />} />
                     <Route exact path='/users' element={<Users />} />
                     <Route exact path='/graphs' element={<GraphChart />} />
@@ -48,4 +63,16 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    loggedUser: state.usersReducer.loggedUser,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loginUser: (data) => dispatch(loginUser(data)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (App);

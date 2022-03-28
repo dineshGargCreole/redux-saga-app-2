@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
-import {getPosts, getPost, resetSearch} from '../../redux/action'
+import {getPosts, getPost, resetSearch, deletePost} from '../../redux/action'
 import PostsList from './PostsList';
 import Loader from './Loader';
 import {Modal} from 'antd'
@@ -27,6 +27,19 @@ function Posts(props) {
   
   const posts = props.posts.posts;
 
+  function confirmDeleteModal(post) {
+    const confirmDelete = () => {
+      props.deletePost(post.id)
+    }
+    return (
+      Modal.confirm({
+        title: post.title,
+        content: 'Do you want to delete this post?',
+        onOk: confirmDelete
+      })
+    )
+  }
+
   return (
     <div className="site-layout-background layout-background">
         <Modal
@@ -38,7 +51,7 @@ function Posts(props) {
         >
           <EditPost onCancel={onCancel} isEdit={isEdit} setIsEdit={() => setIsEdit(!isEdit)} />
         </Modal>
-      { posts.length === 0 ? <Loader /> : <PostsList setIsModalOpen={handleMadal} /> }
+      { posts.length === 0 ? <Loader /> : <PostsList setIsModalOpen={handleMadal} confirmDeleteModal={confirmDeleteModal} /> }
     </div>
   )
 }
@@ -55,6 +68,7 @@ const mapDispatchToProps = dispatch => {
     getPosts: () => dispatch(getPosts()),
     getPost: (id) => dispatch(getPost(id)),
     resetSearch: () => dispatch(resetSearch()),
+    deletePost: (id) => dispatch(deletePost(id)),
   }
 }
 

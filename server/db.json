@@ -1,13 +1,6 @@
 {
   "posts": [
     {
-      "body": "test essst rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla",
-      "post_date": "2022-03-23",
-      "id": 2,
-      "userId": 1,
-      "title": "qui est esse"
-    },
-    {
       "userId": 1,
       "id": 3,
       "post_date": "2022-03-15",
@@ -184,94 +177,10 @@
     },
     {
       "userId": 3,
-      "id": 28,
-      "post_date": "2022-03-15",
-      "title": "delectus ullam et corporis nulla voluptas sequi",
-      "body": "non et quaerat ex quae ad maiores\nmaiores recusandae totam aut blanditiis mollitia quas illo\nut voluptatibus voluptatem\nsimilique nostrum eum"
-    },
-    {
-      "userId": 3,
-      "id": 29,
-      "post_date": "2022-03-15",
-      "title": "iusto eius quod necessitatibus culpa ea",
-      "body": "odit magnam ut saepe sed non qui\ntempora atque nihil\naccusamus illum doloribus illo dolor\neligendi repudiandae odit magni similique sed cum maiores"
-    },
-    {
-      "userId": 3,
       "id": 30,
-      "post_date": "2022-03-15",
-      "title": "a quo magni similique perferendis",
-      "body": "alias dolor cumque\nimpedit blanditiis non eveniet odio maxime\nblanditiis amet eius quis tempora quia autem rem\na provident perspiciatis quia"
-    },
-    {
-      "title": "qweqq",
-      "body": "qweqweq",
-      "post_date": "2022-03-23",
-      "userId": 680,
-      "id": 31
-    },
-    {
-      "title": "test slider",
-      "body": "sliderrrrrrrrrrrrrrrrr",
-      "post_date": "2022-03-24",
-      "userId": 466,
-      "id": 32
-    },
-    {
-      "title": "test2",
-      "body": "test2 slider",
-      "post_date": "2022-03-24",
-      "userId": 150,
-      "id": 33
-    },
-    {
-      "title": "Moment",
-      "body": "qqqqqqq",
-      "post_date": "2022-03-24",
-      "userId": 997,
-      "id": 34
-    },
-    {
-      "title": "Lorem ipsum dolor sit amet",
-      "body": "qqqqqqqqqqqqwwwwwwwwwwww",
-      "post_date": "2022-03-25",
-      "userId": 742,
-      "id": 35
-    },
-    {
-      "title": "Reactjs`",
-      "body": "ant pi chart testing",
-      "post_date": "2022-03-25",
-      "userId": 895,
-      "id": 36
-    },
-    {
-      "title": "multi step form",
-      "body": "multi step form antd",
-      "post_date": "2022-03-25",
-      "userId": 299,
-      "id": 37
-    },
-    {
-      "title": "test multi step form",
-      "body": "test multi step form description..................",
-      "post_date": "2022-03-25",
-      "userId": 242,
-      "id": 38
-    },
-    {
-      "title": "useNavigate hook",
-      "body": "hooks react router dom",
-      "post_date": "2022-03-26",
-      "userId": 166,
-      "id": 39
-    },
-    {
-      "title": "classMate",
-      "body": "classMate paper brand",
-      "post_date": "2022-03-27",
-      "userId": 250,
-      "id": 40
+      "post_date": "2022-03-28",
+      "title": "22",
+      "body": "eum sed dolores ipsam sint possimus debitis occaecati\ndebitis qui qui et\nut placeat enim earum aut odit facilis\nconsequatur suscipit necessitatibus rerum sed inventore temporibus consequatur"
     }
   ],
   "users": [
@@ -279,6 +188,7 @@
       "id": 1,
       "name": "Leanne Graham",
       "username": "Bret",
+      "password": "123",
       "email": "Sincere@april.biz",
       "phone": "1-770-736-8031 x56442",
       "website": "hildegard.org"
@@ -287,6 +197,7 @@
       "id": 2,
       "name": "Ervin Howell",
       "username": "Antonette",
+      "password": "123",
       "email": "Shanna@melissa.tv",
       "phone": "010-692-6593 x09125",
       "website": "anastasia.net"
@@ -295,6 +206,7 @@
       "id": 3,
       "name": "Clementine Bauch",
       "username": "Samantha",
+      "password": "123",
       "email": "Nathan@yesenia.net",
       "phone": "1-463-123-4447",
       "website": "ramiro.info"
@@ -303,6 +215,7 @@
       "id": 4,
       "name": "Patricia Lebsack",
       "username": "Karianne",
+      "password": "123",
       "email": "Julianne.OConner@kory.org",
       "phone": "493-170-9623 x156",
       "website": "kale.biz"
@@ -311,6 +224,7 @@
       "id": 5,
       "name": "Chelsey Dietrich",
       "username": "Kamren",
+      "password": "123",
       "email": "Lucio_Hettinger@annie.ca",
       "phone": "(254)954-1289",
       "website": "demarco.info"
@@ -319,6 +233,7 @@
       "id": 6,
       "name": "Mrs. Dennis Schulist",
       "username": "Leopoldo_Corkery",
+      "password": "123",
       "email": "Karley_Dach@jasper.info",
       "phone": "1-477-935-8478 x6430",
       "website": "ola.org"
@@ -327,6 +242,7 @@
       "id": 7,
       "name": "Kurtis Weissnat",
       "username": "Elwyn.Skiles",
+      "password": "123",
       "email": "Telly.Hoeger@billy.biz",
       "phone": "210.067.6132",
       "website": "elvis.io"
@@ -335,6 +251,7 @@
       "id": 8,
       "name": "Nicholas Runolfsdottir V",
       "username": "Maxime_Nienow",
+      "password": "123",
       "email": "Sherwood@rosamond.me",
       "phone": "586.493.6943 x140",
       "website": "jacynthe.com"
@@ -343,6 +260,7 @@
       "id": 9,
       "name": "Glenna Reichert",
       "username": "Delphine",
+      "password": "123",
       "email": "Chaim_McDermott@dana.io",
       "phone": "(775)976-6794 x41206",
       "website": "conrad.com"
@@ -351,6 +269,7 @@
       "id": 10,
       "name": "Clementina DuBuque",
       "username": "Moriah.Stanton",
+      "password": "123",
       "email": "Rey.Padberg@karina.biz",
       "phone": "024-648-3804",
       "website": "ambrose.net"
